@@ -3,7 +3,7 @@ public:
     long long kokoEating(long long n , vector<int>&piles){
         long long ans = 0;
         for(auto i : piles){
-            ans += (i + n - 1) / n;
+            ans += ceil(double(i) / double(n));
         }
         return ans;
     }
