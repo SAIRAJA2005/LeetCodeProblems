@@ -8,9 +8,9 @@ public:
             res.insert(ans);
             return;
         }
-        ans.push_back(nums[i]);
         generator(i+1,ans,res,nums);
-        ans.pop_back();
+        ans.push_back(nums[i]);
+        //ans.pop_back();
         generator(i+1,ans,res,nums);
     }
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
