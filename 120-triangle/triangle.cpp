@@ -8,7 +8,7 @@ public:
         return dp[i][j] = min(one , two);
     }
     int minimumTotal(vector<vector<int>>& triangle) {
-        vector<vector<int>>dp(triangle.size(),vector<int>(triangle.size(),-1));
+        vector<vector<int>>dp (triangle.size(),vector<int>(triangle.size() , -1));
         return findTriangle(0,0,triangle,dp);
     }
 };
