@@ -1,10 +1,6 @@
 class Solution {
     public long findZeros(int n){
-        long s = 0;
-        while(n != 0){
-            s += n;
-            n--;
-        }
+        long s = (long) n * (n + 1) / 2;
         return s;
     }
     public long zeroFilledSubarray(int[] nums) {
