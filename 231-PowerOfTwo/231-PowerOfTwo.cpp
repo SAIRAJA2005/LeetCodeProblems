@@ -1,0 +1,9 @@
+// Last updated: 01/09/2025, 01:04:50
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        if(n <= 0) return 0;
+        if(n % 2 == 0) return isPowerOfTwo(n / 2);
+        return n == 1;
+    }
+};
