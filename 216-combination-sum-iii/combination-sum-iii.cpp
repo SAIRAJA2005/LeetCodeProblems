@@ -2,19 +2,12 @@ class Solution {
 public:
     void generate(int q, int k, int tar, vector<int>& ans,
                   vector<vector<int>>& res) {
-        for (auto i : ans) {
-            cout << i << " ";
-        }
-        cout << endl;
-        if (tar < 0)
-            return;
+        if (tar < 0) return;
         if (tar == 0 && ans.size() == k) {
-            // sort(ans.begin(),ans.end());
             res.push_back(ans);
             return;
         }
-        if (q > 9)
-            return;
+        if (q > 9) return;
         ans.push_back(q);
         generate(q + 1, k, tar - q, ans, res);
         ans.pop_back();
