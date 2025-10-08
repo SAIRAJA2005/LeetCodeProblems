@@ -1,52 +1,33 @@
 class Solution {
 public:
-    // void bfs(int node , vector<vector<int>>& adj , vector<int>&vis){
-    //     vis[node] = 1;
-    //     queue<int>q;
-    //     q.push(node);
-    //     while(!q.empty()){
-    //         int node = q.front();
-    //         q.pop();
-    //         for(auto it : adj[node]){
-    //             if(!vis[it]){
-    //                 vis[it] = 1;
-    //                 q.push(it);
-    //             }
-    //         }
-    //     }
-    // }
-
-    void dfs(int node, vector<vector<int>>&adj , vector<int>&vis){
-        vis[node] = 1;
-        for(auto it : adj[node]){
-            if(!vis[it]){
-                dfs(it , adj , vis);
+    void dfs(vector<vector<int>>&adjLst, vector<int>&vis,  int idx){
+        vis[idx] = 1;
+        for(auto node : adjLst[idx]){
+            if(!vis[node]){
+                dfs(adjLst, vis, node);
             }
         }
     }
     int findCircleNum(vector<vector<int>>& isConnected) {
-        int s = isConnected.size();
-        vector<vector<int>> adjLs(s);
-
-        //convert matrix into the adjecency list
-        for(int i = 0 ; i < s ; i++){
-            for(int j = 0 ; j < s ; j++){
+        int n = isConnected.size();
+        vector<vector<int>>adjLst(n);
+        for(int i = 0 ; i < n ; i++){
+            for(int j = 0 ; j < n ; j++){
                 if(isConnected[i][j] == 1 && i != j){
-                    adjLs[i].push_back(j);
-                    adjLs[j].push_back(i);
+                    adjLst[i].push_back(j);
+                    adjLst[j].push_back(i);
                 }
             }
         }
-
-        vector<int>vis(s , 0);
+        vector<int>vis(n , 0);
         int cnt = 0;
-        for(int i = 0 ; i < s ; i++){
-            if(vis[i] == 0){
+        for(int i = 0 ; i < n ; i++){
+            if(!vis[i]){
                 cnt++;
-                dfs(i , adjLs , vis);
+                dfs(adjLst, vis , i);
             }
         }
-
         return cnt;
+
     }
 };
