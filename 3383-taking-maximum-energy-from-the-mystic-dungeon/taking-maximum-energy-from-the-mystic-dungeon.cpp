@@ -5,10 +5,8 @@ public:
         for(int i = energy.size() - 1 ; i >= 0 ; i--){
             if(i - k >= 0){
                 energy[i - k] += energy[i];
-                //mx = max(mx, energy[i-k]);
             }
             mx = max(mx, energy[i]);
-            
         }
         return mx;
     }
