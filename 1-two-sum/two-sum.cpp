@@ -4,7 +4,7 @@ public:
         unordered_map<int,int>unmap;
         for(int i = 0 ; i < nums.size() ; i++){
             if(unmap.find(target - nums[i]) != unmap.end()){
-                return {i , unmap[target - nums[i]]};
+                return {unmap[target - nums[i]] , i};
             }
             unmap[nums[i]] = i;
         }
